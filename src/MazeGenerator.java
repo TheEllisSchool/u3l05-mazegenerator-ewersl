@@ -20,8 +20,8 @@ import javax.swing.UIManager;
 
 public class MazeGenerator extends JFrame {
     
-    private int rows = 5;
-    private int cols = 5;
+    private int rows = 20;
+    private int cols = 20;
     private Cell [][] grid = new Cell[rows][cols];
     private JPanel mazePanel = new JPanel();
     private int row = 0;
@@ -48,7 +48,7 @@ public class MazeGenerator extends JFrame {
         JPanel titlePanel = new JPanel(); 
         titlePanel.setBackground(Color.BLACK);
         add(titlePanel, BorderLayout.PAGE_START);
-        Font titleFont = new Font("Fish&Chips", Font.BOLD, 32);
+        Font titleFont = new Font("DK jambo", Font.BOLD, 32);
         JLabel titleLabel = new JLabel("Maze");
         titleLabel.setBackground(Color.BLACK);
         titleLabel.setOpaque(true);

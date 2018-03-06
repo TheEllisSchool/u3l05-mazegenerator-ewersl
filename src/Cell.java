@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 
 public class Cell extends JPanel {
-    private static int SIZE = 20;
+    private static int SIZE = 20; //length and width of each cell 
     public static final int TOP = 0;
     public static final int RIGHT = 1;
     public static final int BOTTOM = 2;
@@ -95,15 +95,24 @@ public class Cell extends JPanel {
         g.setColor(Color.BLACK);
         
         //draw the walls
-        
+        if (isWall(TOP)) {
+        g.drawLine(0, 0, SIZE,0); //top line 
+        g.drawLine(0, 0, 0, SIZE); // left line
         
         //draw the path
-        g.setColor(Color.GREEN);
+        g.setColor(Color.MAGENTA);
         
         
         //draw the balls
-        
+        if (current == true) {
+        g.setColor(Color.BLUE);
+        g.fillOval(SIZE/4, SIZE/4, SIZE- SIZE/2, SIZE- SIZE/2);
     }
+        if (end == true) {
+        	g.setColor(Color.ORANGE); 
+        	g.fillOval(SIZE/4, SIZE/4, SIZE- SIZE/2, SIZE- SIZE/2);
+        }
     
     
+    }
 }
