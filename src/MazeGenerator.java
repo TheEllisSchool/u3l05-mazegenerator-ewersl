@@ -140,7 +140,7 @@ public class MazeGenerator extends JFrame {
             }
         }
         
-        //generateMaze();
+        generateMaze();
         row = 0;
         col = 0;
         endRow = rows - 1;
@@ -165,7 +165,48 @@ public class MazeGenerator extends JFrame {
             //find all neighbors with all walls intact
             ArrayList<Cell> neighbors = new ArrayList();
           
+            if (isAvailable(r-1, c)) {
+            		neighbors.add(grid[r-1] [c]);
+            }
+            
+            if (isAvailable(r, c-1)) {
+        		neighbors.add(grid[r] [c-1]);
+            }
+            	
+            if (isAvailable(r, c+1)) {
+        		neighbors.add(grid[r] [c+1]);
+            }
+            
+            if (isAvailable(r+1, c)) {
+        		neighbors.add(grid[r+1] [c]);
+            }
+            
+            
+            if (neighbors.size()> 0) {
+            		
+            		if (neighbors.size() > 1) {
+            			tryLaterCells.add(grid [r] [c]);
+            		}
+            		
+            
+            int pick = rand.nextInt(neighbors.size());
+            Cell neighbor = neighbors.get(pick);
+            	grid [r] [c].openTo(neighbor); 
+            
+            r = neighbor.getRow();
+            c= neighbor.getCol();
+            visitedCells++;
         
+        } else {
+        		Cell nextCell = tryLaterCells.remove(0);
+        		r= nextCell.getRow();
+        		c=nextCell.getCol();
+        		
+        } 
+    }
+}
+            	
+            	
             //if one or more found
             
                 //if more than 1 found add this cell to the list and try again
@@ -179,8 +220,9 @@ public class MazeGenerator extends JFrame {
                 //to try later
                
         
-        }
-    }
+        
+
+    
     
     private boolean isAvailable(int r, int c){
         boolean available = false;
@@ -205,5 +247,6 @@ public class MazeGenerator extends JFrame {
             }   
         });
     }
-    
+
 }
+
